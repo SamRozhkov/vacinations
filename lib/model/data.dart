@@ -46,13 +46,21 @@ class Data with ChangeNotifier {
   };
 
   final Set<Map<String, dynamic>> _users = {
-    {"name": "Рожкова Елена", "icon": "", "id": 1, "master": true},
-    {"name": "Рожков Семен", "icon": "", "id": 2, "master": false}
+    {"name": "Рожкова Елена", "icon": "", "id": 1, "master": false},
+    {"name": "Рожков Семен", "icon": "", "id": 2, "master": true},
+    {"name": "Киприченко Алексей", "icon": "", "id": 3, "master": false}
   };
 
   void removeUser(Map id) {
     _users.remove(id);
     notifyListeners();
+  }
+
+  bool addUser(Map<String, dynamic> user){
+
+    _users.add(user);
+    notifyListeners();
+    return true;
   }
 
   get users => _users;

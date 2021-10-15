@@ -17,8 +17,7 @@ class Family extends StatelessWidget {
           itemBuilder: (context, index) {
             return ListTile(
               title: Text(users.elementAt(index)["name"]),
-              //subtitle: Text("asas"),
-              trailing: users.elementAt(index)["master"]
+              trailing: !users.elementAt(index)["master"]
                   ? IconButton(
                       enableFeedback: false,
                       onPressed: () => {
@@ -38,7 +37,7 @@ class Family extends StatelessWidget {
         child: Icon(Icons.add),
         onPressed: () => {
           Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => AddFamily(), fullscreenDialog: false))
+              builder: (context) => AddFamily(), fullscreenDialog: true))
         },
       ),
     );
