@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:vaccinations/model/data.dart';
+import 'package:vaccinations/pages/auth_page.dart';
 import 'package:vaccinations/pages/home.dart';
 
 void main() {
@@ -15,9 +16,17 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [ChangeNotifierProvider(create: (_) => Data())],
-      child: const MaterialApp(
+      child: MaterialApp(
         title: "Вакцинация",
-        home: MyHomePage(title: "Ваша вакцинация"),
+        initialRoute: "/",
+        routes: {
+          "/" : (context) =>  AuthPage(),
+          "/main" : (context) => const MyHomePage(title: "Ваша вакцинация")
+        },
+        //home: MyHomePage(title: "Ваша вакцинация"),
+        /*theme: ThemeData(
+          
+        ),*/
       ),
     );
   }

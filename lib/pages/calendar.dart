@@ -11,20 +11,18 @@ class _CalendarState extends State<Calendar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: TableCalendar(
-      availableCalendarFormats: const {
-        CalendarFormat.month: "Месяц",
-        CalendarFormat.week: "Неделя",
-        CalendarFormat.twoWeeks: "Две недели"
-      },
-      calendarFormat: CalendarFormat.month,
-      focusedDay: DateTime.now(),
-      lastDay: DateTime.utc(2022, 1, 1),
-      firstDay: DateTime.utc(2011, 1, 1),
-      onDaySelected: onDaySelected,
-      //eventLoader: List(DateTime.now()),
-    ));
+        body: ListView(children: [
+          Card(
+            margin: EdgeInsets.all(10.0),
+            child: InkWell(
+              onTap: () => {},
+              child: ListTile(
+                contentPadding: EdgeInsets.all(5.0),
+                title: Text("Диспансеризация для граждан в возрасте 30 - 40 лет"), 
+                subtitle: Text("Вы попадаете в категорию лиц, которым рекомендовано пройти диспансеризацию по возрасту"),
+              )),
+          ),
+          //ListTile(title: Text("asdas"), subtitle: Text("a"),)
+        ],));
   }
-
-  onDaySelected(DateTime day, DateTime day1) => {print("$day , $day1")};
 }

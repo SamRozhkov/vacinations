@@ -16,13 +16,14 @@ class _AddFamilyState extends State<AddFamily> {
   
   @override
   Widget build(BuildContext context) {
+  
     Map<String, dynamic> user = {};
     submitButton(){
       user["name"] = fio.text;
       user["master"] = false;
       context.read<Data>().addUser(user);
       if (_formKey.currentState!.validate())
-        Navigator.of(context).pop();  
+        Navigator.of(context).pop(true);  
     } 
     bool action = false;
     return Scaffold(

@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:vaccinations/pages/family_add.dart';
@@ -32,14 +31,41 @@ class Family extends StatelessWidget {
               ),
             );
           }),
-      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+      floatingActionButtonAnimator: NoScalingAnimation(),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        heroTag: null,
+        key: UniqueKey(),
+        child: const Icon(Icons.add),
+        backgroundColor: Color.fromARGB(255, 10, 47, 53),
         onPressed: () => {
           Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => AddFamily(), fullscreenDialog: true))
         },
+        
       ),
     );
   }
+}
+
+class NoScalingAnimation extends FloatingActionButtonAnimator{
+  @override
+  Offset getOffset({required Offset begin, required Offset end, required double progress}) {
+    // TODO: implement getOffset
+    return end;
+    //throw UnimplementedError();
+  }
+
+  @override
+  Animation<double> getRotationAnimation({required Animation<double> parent}) {
+    // TODO: implement getRotationAnimation
+    //throw UnimplementedError();
+    return Tween<double>(begin: 1.0, end: 1.0).animate(parent);
+  }
+
+  @override
+  Animation<double> getScaleAnimation({required Animation<double> parent}) {
+    // TODO: implement getScaleAnimation
+    return Tween<double>(begin: 1.0, end: 1.0).animate(parent);
+  }
+
 }

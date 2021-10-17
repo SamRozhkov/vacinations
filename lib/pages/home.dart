@@ -24,6 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   void _onTapBottomItem(int index) {
+
     setState(() {
       _active_item = index;
     });
@@ -33,7 +34,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(widget.title),
-          //ackgroundColor: Color.fromARGB(255, 10, 47, 53),
+      
+          backgroundColor: Color.fromARGB(255, 10, 47, 53),
           actions: [
             PopupMenuItem(
               child: PopupMenuButton(
@@ -52,9 +54,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         title: const Text("Елена Сергеевна"),
                       )),
-                  const PopupMenuItem(
-                    child: Text("asdas"),
+                  PopupMenuItem(
                     value: 1,
+                    child: ListTile(
+                        leading: CircleAvatar(
+                          backgroundImage: Image.network(
+                            "https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes-thumbnail.png",
+                            fit: BoxFit.cover,
+                          ).image,
+                        ),
+                        title: const Text("Рожков Семен"),
+                      )
                   )
                 ],
                 icon: CircleAvatar(
@@ -79,20 +89,20 @@ class _MyHomePageState extends State<MyHomePage> {
         //selectedItemColor: const Color.fromARGB(255, 255, 202, 122),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Домой',
+              icon: Icon(Icons.local_hospital),
+              label: 'Прививки',
               backgroundColor: Color.fromARGB(255, 10, 47, 53)),
           BottomNavigationBarItem(
               icon: Icon(Icons.calendar_today_rounded),
-              label: 'Календарь',
+              label: 'Профосмотр',
               backgroundColor: Color.fromARGB(255, 10, 47, 53)),
           BottomNavigationBarItem(
               icon: Icon(Icons.family_restroom),
               label: 'Семья',
               backgroundColor: Color.fromARGB(255, 10, 47, 53)),
           BottomNavigationBarItem(
-              icon: Icon(Icons.note_add),
-              label: 'Запись',
+              icon: Icon(Icons.airplanemode_active),
+              label: 'Путишествие',
               backgroundColor: Color.fromARGB(255, 10, 47, 53))
         ],
       ),
